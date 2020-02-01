@@ -1,0 +1,36 @@
+Smallest (non-zero) value for big endian/smallest positive big endian number
+java Endianness 0 0 0 1
+Big Endian: 1; Little Endian: 16777216
+
+Smallest (non-zero) value for little endian/smallest positive little endian number
+java Endianness 1 0 0 0
+Big Endian: 16777216; Little Endian: 1 
+
+Largest positive value (big endian)
+java Endianness 7f ff ff ff
+Big Endian: 2147483647; Little Endian: -129
+
+Largest positive value (little endian)
+java Endianness ff ff ff 7f
+Big Endian: -129; Little Endian: 2147483647; 
+
+Largest 32-bit value
+java Endianness ff ff ff ff
+Big Endian: -1; Little Endian: -1
+
+zero
+java Endianness 0 0 0 0
+Big Endian: 0; Little Endian: 0
+
+palindrome-like value
+java Endianness 1 1 1 1
+Big Endian: 16843009; Little Endian: 16843009;
+
+first occurrence of negative value
+java Endianness 80 0 0 0
+Big Endian: -2147483648 Little Endian: 128
+
+
+
+
+

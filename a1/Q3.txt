@@ -1,0 +1,1 @@
+0xA55F5FA5. Hex numbers whose hex digit pairs make up a palindrome, also known as a sequence of characters that can be read the same left to right and vice versa, can be represented the same in both Big-Endian and Little-Endian representation.

@@ -1,0 +1,1 @@
+The processor used to generate the coordinates of Proxima Centauri probably used Big-Endian representation, whereas Intel processors use Little-Endian representation. So reading our values in Big-Endian representation gives us RA = 1,710,622,464 and D = -1,282,286,081
