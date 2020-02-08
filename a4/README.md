@@ -29,7 +29,7 @@ make foo -> build foo from foo.c
 writing Makefiles:
 ```
 target: input1 input2 input3 
-    command_to_build_output_from_its_inputs`
+    command_to_build_output_from_its_inputs
 ```
 target depends on 3 other files (example), command is optional if exists a default rule for building a filetype (.c), otherwise command tells how to rebuild those parts to make target
 
