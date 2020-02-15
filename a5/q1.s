@@ -3,55 +3,55 @@
 
 ## C statement 1
 S1:
-ld    $i, r0            #
-ld    (r0), r0          #
-ld    $a, r1            #
-ld    (r1), r1          #
-ld    (r1), r1          #
-ld    (r1, r0, 4), r2   #
-ld    $v0, r3           #
-st    r2, (r3)          #
+ld    $i, r0            # r0 = &i
+ld    (r0), r0          # r0 = i
+ld    $a, r1            # r1 = &a
+ld    (r1), r1          # r1 = a
+ld    (r1), r1          # r1 = a->x
+ld    (r1, r0, 4), r2   # r2 = i[a->x]
+ld    $v0, r3           # r3 = &v0
+st    r2, (r3)          # v0 = i[a->x]
 
 ## C statement 2
 S2:
-ld    $i, r0            #
-ld    (r0), r0          #
-ld    $a, r1            #
-ld    (r1), r1          #
-inca  r1                #
-ld    (r1, r0, 4), r2   #
-ld    $v1, r3           #
-st    r2, (r3)          #
+ld    $i, r0            # r0 = &i 
+ld    (r0), r0          # r0 = i
+ld    $a, r1            # r1 = &a 
+ld    (r1), r1          # r1 = a 
+inca  r1                # r1 += 4
+ld    (r1, r0, 4), r2   # r2 = a->b.y[1]
+ld    $v1, r3           # r3 = &v1 
+st    r2, (r3)          # v1 = a->b.y[1]
 
 ## C statement 3
 S3:
-ld    $i, r0            #
-ld    (r0), r0          #
-ld    $a, r1            #
-ld    (r1), r1          #
-ld    20(r1), r1        #
-ld    (r1), r1          #
-ld    (r1, r0, 4), r2   #
-ld    $v2, r3           #
-st    r2, (r3)          #
+ld    $i, r0            # r0 = &i
+ld    (r0), r0          # r0 = i
+ld    $a, r1            # r1 = &a
+ld    (r1), r1          # r1 = a 
+ld    20(r1), r1        # r1 = a->b.a
+ld    (r1), r1          # r1 = a->b.a->x
+ld    (r1, r0, 4), r2   # r2 = a->b.a->x[i]
+ld    $v2, r3           # r3 = &v2
+st    r2, (r3)          # v2 = a->b.a->x[i]
 
 ## C statement 4
 S4:
-ld    $a, r1            #
-ld    (r1), r1          #
-st    r1, 20(r1)        #
+ld    $a, r1            # r1 = &a 
+ld    (r1), r1          # r1 = a
+st    r1, 20(r1)        # a->b.a->x = a
 
 ## C statement 5
 S5:
-ld    $i, r0            #
-ld    (r0), r0          #
-ld    $a, r1            #
-ld    (r1), r1          #
-ld    20(r1), r1        #
-inca  r1                #
-ld    (r1, r0, 4), r2   #
-ld    $v3, r3           #
-st    r2, (r3)          #
+ld    $i, r0            # r0 = &i
+ld    (r0), r0          # r0 = i 
+ld    $a, r1            # r1 = &a
+ld    (r1), r1          # r1 = a
+ld    20(r1), r1        # r1 = &a->b.a->x
+inca  r1                # r1 += 4
+ld    (r1, r0, 4), r2   # r2 = a->b.y[1]
+ld    $v3, r3           # r3 = &v3
+st    r2, (r3)          # v3 = a->b.y[1]
 
 
 halt

@@ -1,4 +1,4 @@
-CFLAGS += -std=gnu11
+CFLAGS += -std=gnu11 -g
 EXES   =  mymalloc
 OBJS   =  mymalloc.o main.o
 

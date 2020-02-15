@@ -88,6 +88,8 @@ int test_freelist2(struct testfunc *tf) {
   void *q[2] = {0};
   int sizes[2] = {0};
 
+  printf("pass\n");
+
   /* Allocate two chunks of memory, then free them. */
   for(int i=0; i<2; i++) {
     void *ptr = mymalloc(FREELIST2_SIZE);
@@ -97,6 +99,7 @@ int test_freelist2(struct testfunc *tf) {
     p[i] = ptr;
     sizes[i] = FREELIST2_SIZE;
   }
+  printf("pass2\n");
   myfree(p[0]);
   myfree(p[1]);
 
@@ -126,17 +129,17 @@ int test_simple(struct testfunc *tf) {
   /* A relatively simple test which allocates and frees a few items repeatedly. */
   int sizes[SIMPLE_NBUCKETS];
   for(int i=0; i<SIMPLE_NBUCKETS; i++) {
-    sizes[i] = i * 8;
+    sizes[i] = i * 8; // sizes = {0,8,16,32}
   }
 
   void *ptrs[SIMPLE_NBUCKETS] = {0};
-  for(int i=0; i<SIMPLE_ITERS; i++) {
-    int idx = i % SIMPLE_NBUCKETS;
+  for(int i=0; i<SIMPLE_ITERS; i++) { // i < 16
+    int idx = i % SIMPLE_NBUCKETS; // idx = 0 - 3
     if(ptrs[idx]) {
       myfree(ptrs[idx]);
       ptrs[idx] = NULL;
     } else {
-      void *ptr = mymalloc(sizes[idx]);
+      void *ptr = mymalloc(sizes[idx]); // 
       if(0 != check_alloc(tf, ptr, sizes[idx], ptrs, sizes, SIMPLE_NBUCKETS)) {
         return -1;
       }
@@ -153,7 +156,7 @@ int test_fixedsize(struct testfunc *tf) {
   /* A harder test which allocates and frees a lot of equal-sized elements many times */
   int sizes[FIXED_NBUCKETS];
   for(int i=0; i<FIXED_NBUCKETS; i++) {
-    sizes[i] = FIXED_SIZE;
+    sizes[i] = FIXED_SIZE; // size[128] where each index = 256
   }
 
   void *ptrs[FIXED_NBUCKETS] = {0};
