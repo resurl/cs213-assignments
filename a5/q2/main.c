@@ -88,8 +88,6 @@ int test_freelist2(struct testfunc *tf) {
   void *q[2] = {0};
   int sizes[2] = {0};
 
-  printf("pass\n");
-
   /* Allocate two chunks of memory, then free them. */
   for(int i=0; i<2; i++) {
     void *ptr = mymalloc(FREELIST2_SIZE);
@@ -99,7 +97,7 @@ int test_freelist2(struct testfunc *tf) {
     p[i] = ptr;
     sizes[i] = FREELIST2_SIZE;
   }
-  printf("pass2\n");
+  
   myfree(p[0]);
   myfree(p[1]);
 

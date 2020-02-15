@@ -55,7 +55,7 @@ struct list_node *list_add_element(struct list *l, struct element *e) {
 }
 
 /**
- * Remove element from list and free it
+ * Remove element from list and free it.
  */
 void list_delete_element(struct list *l, struct list_node *n) {
   if (n == l->head)
@@ -91,5 +91,5 @@ struct list_node *list_node_get_next(struct list_node *n) {
  * Get list node element. Returned element pointer is still owned by the list.
  */
 struct element *list_node_get_element(struct list_node *n) {
-  return n->elem;
+  return element_new(element_get_num(n->elem),element_get_value(n->elem));
 }
