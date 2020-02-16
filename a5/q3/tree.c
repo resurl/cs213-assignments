@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "refcount.h"
 #include "tree.h"
 
 struct tree {
@@ -48,6 +49,7 @@ static struct tree_node *tree_insert_node_helper(struct tree_node **np, struct e
   } else {
     *np = malloc(sizeof(**np));
     (*np)->elem = e;
+    rc_keep_ref(e);
     (*np)->left = (*np)->right = NULL;
     return *np;
   }
@@ -57,6 +59,7 @@ static struct tree_node *tree_insert_node_helper(struct tree_node **np, struct e
  * Insert a new list element into the tree
  */
 struct tree_node *tree_insert_node(struct tree *t, struct element *e) {
+  rc_keep_ref(e);
   return tree_insert_node_helper(&t->root, e);
 }
 
