@@ -23,14 +23,12 @@ void  rc_keep_ref(void* p) {
   int* ref_count = p - 8;
   // increment ref count
   (*ref_count) ++;
-  printf("Ref incerased to: %d \n", (int) *ref_count);
 }
 
 void  rc_free_ref(void* p) {
   // get pointer to ref count from client pointer
   int* ref_count = p - 8;
   // decrement ref count
-  printf("Ref b4 free: %d \n", (int) *ref_count);
   (*ref_count) --;
   // free allocation when ref count is 0
   if (*ref_count == 0)

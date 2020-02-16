@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include "refcount.h"
 #include "element.h"
 
@@ -23,16 +22,12 @@ struct element *element_new(int num, char *value) {
   }
   e->num = num;
   e->value = rc_strdup(value);
-  //printf("Ref of ele: %ld", (long) *(e-1));
   return e;
 }
 
 /** Delete an element, freeing the memory associated with it. */
 void element_delete(struct element *e) {
- // int* i = e - 8;
- 
   rc_free_ref(e->value);
-  printf("Elem's num: %d \n", e->num);
   rc_free_ref(e);
 }
 
@@ -58,6 +53,5 @@ char *rc_strdup(char* value) {
   char* n = rc_malloc(len + 1);
   for (int i= 0; i< len+1; i++)
     n[i] = value[i];
-  printf ("Address of value: %ld \n", (long) *n);
   return n;
 }
