@@ -1,0 +1,4 @@
+The happens in because while the List in main gets a new element, tree instead gets a pointer to the element in list.
+When the elements in list are freed, tree now has a bunch of dangling pointers.
+To fix this, we have to change the way that tree obtains its pointers, by changing the function: list_node_get_element
+Rather than returning a pointer to the element in list, it returns a pointer to a copy of the element in list.

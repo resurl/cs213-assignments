@@ -1,0 +1,16 @@
+from q1.s
+Reads:
+Line 9: a->x
+Line 10: a->x[0]
+Line 11 : i[a->x]
+Line 22: a->b.y[1]
+Line 32: a->b.a
+Line 33: a->b.a->x
+Line 34: a->b.a->x[i]
+
+Writes:
+Line 13: st r2, (r3). v0 = i[a->x], writes a-> x at index i to v0
+Line 24: st r2, (r3). v1 = a->b.y[1] writes a->b.y at index 1 to v1
+Line 36: st r2, (r3). v2 = a->b.a->x[i] writes a->b.a->x at index i to v2
+Line 42: st r1, 20(r1). a->b.a->x =a writes x to a->b.a->x
+Line 54: st r2, (r3). v3 = a->b.y[1] writes a->b.y[1] to v3

@@ -31,7 +31,7 @@ void q1() {
   v0 = i[a->x];
   v1 = a->b.y[i];
   v2 = a->b.a->b.y[0];
-  a->b.a->x = a;
+  a->b.a->x = a->x;
   v3 = a->b.y[i];
 }
 

@@ -28,7 +28,7 @@ S3:
 ld    $i, r0            # r0 = &i
 ld    (r0), r0          # r0 = i
 ld    $a, r1            # r1 = &a
-ld    (r1), r1          # r1 = a 
+ld    (r1), r1          # r1 = a
 ld    20(r1), r1        # r1 = a->b.a
 ld    (r1), r1          # r1 = a->b.a->x
 ld    (r1, r0, 4), r2   # r2 = a->b.a->x[i]
@@ -38,8 +38,8 @@ st    r2, (r3)          # v2 = a->b.a->x[i]
 ## C statement 4
 S4:
 ld    $a, r1            # r1 = &a 
-ld    (r1), r1          # r1 = a
-st    r1, 20(r1)        # a->b.a->x = a
+ld    (r1), r1          # r1 = a->x
+st    r1, 20(r1)        # a->b.a->x = a->x
 
 ## C statement 5
 S5:

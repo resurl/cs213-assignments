@@ -91,5 +91,6 @@ struct list_node *list_node_get_next(struct list_node *n) {
  * Get list node element. Returned element pointer is still owned by the list.
  */
 struct element *list_node_get_element(struct list_node *n) {
-  return element_new(element_get_num(n->elem),element_get_value(n->elem));
+ // return element_new(element_get_num(n->elem),element_get_value(n->elem));
+ return n->elem;
 }

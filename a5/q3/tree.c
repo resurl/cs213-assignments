@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "refcount.h"
 #include "tree.h"
 
 struct tree {
@@ -41,13 +42,18 @@ void tree_delete(struct tree* t) {
 
 static struct tree_node *tree_insert_node_helper(struct tree_node **np, struct element *e) {
   if(*np != NULL) {
-    if(strcmp(element_get_value(e), element_get_value((*np)->elem)) <= 0)
+    if(strcmp(element_get_value(e), element_get_value((*np)->elem)) <= 0) {
+      printf("Does left loop run?");
       return tree_insert_node_helper(&(*np)->left, e);
+    }
     else
+      printf("Does left loop run?");
       return tree_insert_node_helper(&(*np)->right, e);
   } else {
     *np = malloc(sizeof(**np));
     (*np)->elem = e;
+    rc_keep_ref(e);
+    rc_keep_ref (element_get_value(e));
     (*np)->left = (*np)->right = NULL;
     return *np;
   }
@@ -57,6 +63,7 @@ static struct tree_node *tree_insert_node_helper(struct tree_node **np, struct e
  * Insert a new list element into the tree
  */
 struct tree_node *tree_insert_node(struct tree *t, struct element *e) {
+  //rc_keep_ref(e);
   return tree_insert_node_helper(&t->root, e);
 }
 
