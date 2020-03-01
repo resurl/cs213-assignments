@@ -32,31 +32,32 @@ avg: ld $0, r6      # r6 = 0
 
 sort: ld (r0), r2   # &s[0]
       ld $1, r5     # j
-      ld (r0), r1   # reset s 
       bgt r3, inner # if i > 0, goto inner (loop)
       br median     # else get student id w median avg
 
-inner: mov r3, r4   # i for comparison
+inner: mov r5, r4   # j for comparison
        not r4
-       inc r4       # -i
-       add r5, r4   # j - i
+       inc r4       # -j
+       add r3, r4    # i-j
        ld $24, r1   # r1 = 24
        add r1, r2   # &s[j]
-       bgt r4, sort # if j > i goto sort (outer loop)
-       br sortif    # else (j <= i) goto sortif (if statement)
+       bgt r4, sortif 
+       beq r4, sortif #if (i-j) >= 0 goto sortif
+       dec r3
+       br sort #else go to sort
 
 sortif: ld 20(r2), r6   # r6 = s[j].average
+        not r6
+        inc r6          # r6 = -s[j].average
         ld $24, r7      # r7 = 24 for offset
         not r7
         inc r7
-        add r7, r2      # r7 = &s[j-1]
+        add r7, r2      # r2 = &s[j-1]
         ld 20(r2), r7   # r7 = s[j-1].average
-        not r7
-        inc r7          # r7 = -s[j-1].average
-        add r7, r6      # r6 = s[j-1].average - s[j].average ?
+        add r7, r6      # r6 = s[j-1].average - s[j].average
         ld $24, r7      
         add r7, r2      # move s[j-1] pointer up
-        bgt r6, body    # if (s[j-1 average > s[j].average) goto body (inside if)
+        bgt r6, body    # if (s[j-1] average > s[j].average) goto body (inside if)
         inc r5          # else j++ 
         br inner        # goto inner (loop, beginning)
 
@@ -102,8 +103,10 @@ median: ld $n, r2
         mov r2, r7      # r7 = middle
         shl $3, r6      # r6 = middle*8
         shl $4, r7      # r7 = middle*16
+        ld $0, r2
         add r6, r2
         add r7, r2      # r2 *= 24
+        shr $2, r2
         ld (r0), r5     # &s[0]
         ld (r5, r2, 4), r4 #s[middle]
         ld $m, r3
@@ -114,24 +117,48 @@ halt
 
 
 .pos 0x2000
-n:    .long 3
+n:    .long 7
 m:    .long 0
 s:    .long base
-base: .long 1234
-      .long 80
-      .long 60
-      .long 78
-      .long 90
+base: .long 1111
+      .long 99
+      .long 99
+      .long 99
+      .long 99
       .long 0
-      .long 5678
-      .long 65
-      .long 90
-      .long 95
-      .long 95
+      .long 2222
+      .long 88
+      .long 88
+      .long 88
+      .long 88
       .long 0
-      .long 8748
-      .long 34
-      .long 20
-      .long 09
-      .long 79
+      .long 3333
+      .long 77
+      .long 77
+      .long 77
+      .long 77
+      .long 0
+      .long 4444
+      .long 66
+      .long 66
+      .long 66
+      .long 66
+      .long 0
+      .long 5555
+      .long 55
+      .long 55
+      .long 55
+      .long 55
+      .long 0
+      .long 6666
+      .long 44
+      .long 44
+      .long 44
+      .long 44
+      .long 0
+      .long 7777
+      .long 33
+      .long 33
+      .long 33
+      .long 33
       .long 0
