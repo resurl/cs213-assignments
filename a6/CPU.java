@@ -140,7 +140,7 @@ public class CPU extends AbstractSM213CPU {
                         break;
 
                     case 0xf: // gpc ............... 6fpr
-                        reg.set(insOp2.get(), reg.get(insOp2.get()) + reg.get(insOp1.get())*2);
+                        reg.set(insOp2.get(), pc.get() + (insOp1.get()*2));
                         break;
 
                     default:
@@ -174,7 +174,7 @@ public class CPU extends AbstractSM213CPU {
                 break;
 
             case 0xc: // j o(rr) ............... crpp  (pp = o / 2)
-                pc.set(reg.get(insOp0.get()) + (2*insOpImm.get()));
+                pc.set(reg.get(insOp0.get()) + (insOpImm.getUnsigned()*2));
                 break;
 
             case 0xf: // halt or nop ............. f?--

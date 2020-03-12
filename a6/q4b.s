@@ -53,8 +53,8 @@ x:
     .long 1
     .long 2
     .long 3
-    .long -1
-    .long -2
+    .long 0xffffffff
+    .long 0xfffffffe
     .long 0
     .long 184
     .long 340057058
