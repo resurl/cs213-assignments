@@ -1,10 +1,6 @@
-#include <stdio.h>
-int array[] = {10,10,10,0};
-
 void q2(int a, int b, int c) {
     int j;
-
-    switch (c) {
+    switch (a) {
         case 10:
             j = b + a;
             break;
@@ -12,7 +8,7 @@ void q2(int a, int b, int c) {
             j = b - a;
             break;
         case 14:
-            j = (b > a);
+            j = (b > a); // if array[1] > array[2] j = 1
             break;
         case 16:
             j = (a > b);
@@ -25,9 +21,3 @@ void q2(int a, int b, int c) {
     }
     array[3] = j;
 }
-
-int main() {
-    q2(array[2], array[1], array[0]);
-    printf("%d",array[3]);
-    return 0;
-} 

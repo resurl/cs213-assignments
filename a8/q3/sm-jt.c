@@ -36,8 +36,8 @@ int exec() {
   int addr, val;
   void* jt1[16] = {&&L0,&&L1,&&L2,&&L3,&&L4,
     0,&&L6,&&L7,&&L8,&&L9,&&La,&&Lb,&&Lc,0,0,&&Lf};
-  void* jt2[9] = {&&A0,&&A1,&&A2,&&A3,&&A4,
-    &&A6,&&A7,&&Af};  
+  void* jt2[16] = {&&A0,&&A1,&&A2,&&A3,&&A4,&&A5,
+    &&A6,&&A7,0,0,0,0,0,0,0,&&Af};
   if (insOpCode < 0x0 
     || insOpCode > 0xf|| insOpCode == 0x5 || insOpCode == 0xd || insOpCode == 0xe ) goto DEFAULT;
   goto *jt1[insOpCode];
@@ -69,14 +69,14 @@ int exec() {
     mem [addr+3] = val       & 0xff;
     goto CONT;
   L6:
-    if (insOp0 >= 0 && insOp0 <= 8) {
+    if (insOp0 == 0xf || insOp0 >= 0 && insOp0 < 8) {
         goto *jt2[insOp0];
     }
     else {
         goto CDEFAULT;
     }
     A0:
-    reg [insOp0] = insOpExt;
+    reg [insOp2] = reg [insOp1];
     goto CONTI;
     A1:
     reg [insOp2] = reg [insOp1] + reg [insOp2];

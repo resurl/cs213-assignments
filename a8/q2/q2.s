@@ -17,7 +17,7 @@
                  st   r0, 0x0(r1)             # array[3] = r0
                  halt
 .pos 0x200
-                 .long 0x0000000a           # array[0]
+                 .long 0x00000012           # array[0]
                  .long 0x0000000a
                  .long 0x0000000a
                  .long 0x00000000
