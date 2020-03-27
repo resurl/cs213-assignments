@@ -1,0 +1,26 @@
+leanna@DESKTOP-FKO1AEN:/mnt/c/Users/leann/Documents/cs-213/a9$ time ./aRead 10
+163
+
+real    0m0.030s
+user    0m0.016s
+sys     0m0.000s
+
+leanna@DESKTOP-FKO1AEN:/mnt/c/Users/leann/Documents/cs-213/a9$ time ./aRead 100
+1468
+
+real    0m0.032s
+user    0m0.016s
+sys     0m0.000s
+
+leanna@DESKTOP-FKO1AEN:/mnt/c/Users/leann/Documents/cs-213/a9$ time ./aRead 1000
+14511
+
+real    0m0.062s
+user    0m0.000s
+sys     0m0.063s
+
+It's a lot faster than the synchronous read wow
+Seems logarithmic??
+
+It's asynchronous so it doesn't have to wait for each disk read to finish before proceeding
+to the next one.

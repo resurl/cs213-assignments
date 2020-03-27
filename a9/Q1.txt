@@ -1,0 +1,26 @@
+leanna@DESKTOP-FKO1AEN:/mnt/c/Users/leann/Documents/cs-213/a9$ time ./sRead 10
+163
+
+real    0m0.133s
+user    0m0.109s
+sys     0m0.031s
+
+leanna@DESKTOP-FKO1AEN:/mnt/c/Users/leann/Documents/cs-213/a9$ time ./sRead 100
+1468
+
+real    0m1.132s
+user    0m1.109s
+sys     0m0.016s
+
+leanna@DESKTOP-FKO1AEN:/mnt/c/Users/leann/Documents/cs-213/a9$ time ./sRead 1000
+14518
+
+real    0m10.919s
+user    0m10.734s
+sys     0m0.000s
+
+We observe that time spent reading grows in an approximately linear fashion.
+The runtime performance correlates to the 10ms/read we were told about in the Background
+section, since each program execution's runtime is the number of reads times 10ms, more or less.
+The extra time is probably due to the other code that need to run (ie. the reading of the arguments
+and the function calls, loops).

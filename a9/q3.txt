@@ -1,0 +1,12 @@
+./tRead 10
+0.029s
+./tread 100
+0.041s
+./tRead 1000
+0.256s
+
+The runtime is comparable to that of aRead for n=10, 100, because the threads replicate the asynchronous functionality that was
+implemented in aRead.
+However, for n = 1000, the run time for tRead is about 10x longer.
+This is possibly due to thread functionality being more expensive than simple operations.
+It seems to increase exponentially.
