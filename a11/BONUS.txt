@@ -1,0 +1,50 @@
+magic!
+
+jk
+
+well.c
+Times with 1 little endian 3
+Times with 2 little endian 12
+Times with 3 little endian 985
+Times with 1 big endian    1
+Times with 2 big endian    8
+Times with 3 big endian    991
+Waiting Histogram
+  Number of times people waited for 0 people to enter: 188
+  Number of times people waited for 1 person to enter: 198
+  Number of times people waited for 2 people to enter: 208
+  Number of times people waited for 3 people to enter: 193
+  Number of times people waited for 4 people to enter: 466
+  Number of times people waited for 5 people to enter: 445
+  Number of times people waited for 6 people to enter: 222
+  Number of times people waited for 7 people to enter: 62
+  Number of times people waited for 8 people to enter: 5
+  Number of times people waited for 9 people to enter: 1
+  Number of times people waited for 10 people to enter: 1
+  Number of times people waited for 995 people to enter: 1
+  Number of times people waited for 996 people to enter: 1
+  Number of times people waited for 997 people to enter: 2
+  Number of times people waited for 998 people to enter: 1
+  Number of times people waited for 999 people to enter: 1
+  Number of times people waited for 1000 people to enter: 1
+  Number of times people waited for 1001 people to enter: 1
+  Number of times people waited for 1002 people to enter: 1
+  Number of times people waited for 1003 people to enter: 1
+  Number of times people waited for 1006 people to enter: 1
+
+well_sem.c
+Times with 1 little endian 7
+Times with 2 little endian 47
+Times with 3 little endian 974
+Times with 1 big endian    6
+Times with 2 big endian    34
+Times with 3 big endian    932
+Waiting Histogram
+  Number of times people waited for 0 people to enter: 1957
+  Number of times people waited for 1 person to enter: 32
+  Number of times people waited for 2 people to enter: 6
+  Number of times people waited for 3 people to enter: 1
+  Number of times people waited for 4 people to enter: 2
+  Number of times people waited for 5 people to enter: 1
+  Number of times people waited for 6 people to enter: 1
+

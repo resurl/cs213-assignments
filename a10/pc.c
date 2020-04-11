@@ -8,7 +8,7 @@
 #define NUM_ITERATIONS 200
 #define NUM_PRODUCERS  2
 #define NUM_CONSUMERS  2
-#define NUM_PROCESSORS 4
+#define NUM_PROCESSORS 2
 
 uthread_mutex_t mx;
 uthread_cond_t MAX;
@@ -47,7 +47,7 @@ void* consumer (void* v) {
     uthread_mutex_lock(*(uthread_mutex_t*) v);
     //printf("entered cons lock, items: %d\n", items);
     while(items <= 0)
-    uthread_cond_wait(MIN);
+      uthread_cond_wait(MIN);
     items -= 1;
     assert (items >= 0 && items <= MAX_ITEMS);
     histogram [items] ++;  
