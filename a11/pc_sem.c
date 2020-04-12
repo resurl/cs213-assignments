@@ -28,7 +28,7 @@ void* producer (void* v) {
     items += 1;
     uthread_sem_signal(count);
     assert (items >= 0);
-    assert(items <=MAX_ITEMS);
+    assert (items <=MAX_ITEMS);
     histogram [items] ++;
     uthread_sem_signal(mutex);
   }
@@ -44,7 +44,7 @@ void* consumer (void* v) {
     items -= 1;
     uthread_sem_signal(max); 
     assert (items >= 0);
-    assert(items <=MAX_ITEMS);
+    assert (items <=MAX_ITEMS);
     histogram [items] ++;
     uthread_sem_signal(mutex);
   }

@@ -97,7 +97,8 @@ void recordWaitingTime (int waitingTime) {
   uthread_sem_signal(waitingHistogramMutex);
 }
 
-
+// check occupancy
+// check 
 void enterwell (struct Person* p) {
   printf("entered well\n");
   uthread_sem_wait(well->max);

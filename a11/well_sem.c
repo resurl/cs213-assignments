@@ -91,7 +91,6 @@ int is_wait (int a, int b) {
   return 0;
 }
 
-
 void recordWaitingTime (int waitingTime) {
   uthread_sem_wait(waitingHistogramMutex);
   if (waitingTime < WAITING_HISTOGRAM_SIZE)
@@ -100,7 +99,6 @@ void recordWaitingTime (int waitingTime) {
     waitingHistogramOverflow ++;
   uthread_sem_signal(waitingHistogramMutex);
 }
-
 
 void enterwell (struct Person* p) {
   printf("entered well\n");
