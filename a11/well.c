@@ -178,7 +178,7 @@ void* person(void* pv) {
       
     leaveWell();
 
-    for (int k = 0; j < NUM_ITERATIONS; k++)
+    for (int k = 0; k < NUM_ITERATIONS; k++)
       uthread_yield();
 
     p->num_enters++;
